@@ -10,4 +10,4 @@ The CF template finally configures the AWS CLI: Jenkins will run as the IAM user
 
 The CF template outputs the Jenkins Url.
 
-Direct reference from CloudFormation: https://cf-templates-1e0b4nzsaectk-us-east-1.s3.amazonaws.com/Jenkins_Single_Instance.yml
+Direct reference: https://cf-templates-1e0b4nzsaectk-us-east-1.s3.amazonaws.com/Jenkins_Single_Instance.yml
