@@ -405,6 +405,9 @@ Resources:
             - ''
             - - !Ref 'AWS::StackName'
               - '-JenkinsServer'
+        -
+          Key: PatchManager_AutoUpdate
+          Value: 'true'
       UserData: !Base64 
         'Fn::Join':
           - ''
