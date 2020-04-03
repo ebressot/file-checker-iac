@@ -10,4 +10,17 @@ The CF template finally configures the AWS CLI: Jenkins will run as the IAM user
 
 The CF template outputs the Jenkins Url.
 
-Direct reference: https://cf-templates-1e0b4nzsaectk-us-east-1.s3.amazonaws.com/Jenkins_Single_Instance.yml
+Direct access: https://cf-templates-1e0b4nzsaectk-us-east-1.s3.amazonaws.com/Jenkins_Single_Instance.yml
+
+Reference: WordPress basic single instance at https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sample-templates-applications-us-east-1.html
+
+## Bucket_Website_Hosting.yml
+CloudFormation template to create an s3 bucket with Static Website Hosting enabled and public read policy.
+
+This bucket can be used to host the static elements (html, css, js) of your public website.
+
+The CF template outputs the wesite Url.
+
+Direct access: https://cf-templates-1e0b4nzsaectk-us-east-1.s3.amazonaws.com/Bucket_Website_Hosting.yml
+
+Reference: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-s3.html#scenario-s3-bucket-website
