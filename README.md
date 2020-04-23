@@ -35,3 +35,21 @@ The CF template's parameter values can optionally be modified at the same time (
 The command fails if there is nothing to update.
 
 Use case examples: Jenkins_Single_Instance.bat, Bucket_Website_Hosting.bat
+
+## Files_Storage_Account.json
+AzureRM template to create a storage account and a blob container in it.
+
+This container can be used to store files (csv...) to be processed.
+
+The ARM template outputs the storage account name and container name.
+
+Direct link: https://raw.githubusercontent.com/ebressot/file-checker-iac/master/Files_Storage_Account.json
+
+Reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=template
+
+## Deploy_Azure_ResourceGroup.ps1
+PowerShell script to deploy one of the above AzureRM templates.
+
+The PS script sets the current location to localPath, creates the resource group and applies the ARM template.
+
+Use case examples: Files_Storage_Account.bat
