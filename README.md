@@ -53,3 +53,10 @@ PowerShell script to deploy one of the above AzureRM templates.
 The PS script sets the current location to localPath, creates the resource group and applies the ARM template.
 
 Use case examples: Files_Storage_Account.bat
+
+## Upload_File_BlobContainer.ps1
+PowerShell script to upload a local file to an Azure Blob Container.
+
+The PS script connects to Azure if necessary, retrieves the storage account context and uploads the file to the Blob Container.
+
+Use case examples: Upload_TXSXMain_BlobContainer.bat
