@@ -66,7 +66,7 @@ The PS script sets the current location to localPath, creates the resource group
 
 If a parameter file name is provided, use the parameter values from the parameter file.
 
-If the *appParameters* parameter is set to true, pass the Object Id (Azure AD) or the current user as a parameter to the ARM template plus other parameters entered by the user interactively. The user may have to login twice: first to connect to their Azure Account and then to connect to Azure AD.
+If the *appParameters* parameter is set to true, pass the Object Id (Azure AD) of the current user as a parameter to the ARM template plus other parameters entered by the user interactively. The user may have to login twice: first to connect to their Azure Account and then to connect to Azure AD.
 **Warning:** this function uses the Azure AD PowerShell module which doesn't work on PowerShell Core.
 
 Use case examples: Files_Storage_Account.bat
