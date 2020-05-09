@@ -1,0 +1,112 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        },
+        "tenant": {
+            "type": "string",
+            "defaultValue": "[subscription().tenantId]",
+            "metadata": {
+                "description": "Azure Active Directory tenant ID."
+            }
+        },
+        "servicePrincipal": {
+            "type": "string",
+            "metadata": {
+                "description": "Key vault administrator's object ID."
+            }
+        },
+        "secretName": {
+            "type": "string",
+            "defaultValue": "alpha-vantage-api-key"
+        },
+        "secretValue": {
+            "type": "securestring"
+        }
+    },
+    "variables": {
+        "keyVaultName": "[concat('key', uniquestring(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('keyVaultName')]",
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2019-09-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "tenantId": "[parameters('tenant')]",
+                "sku": {
+                    "name": "standard",
+                    "family": "A"
+                },
+                "accessPolicies": [
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "[parameters('servicePrincipal')]",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "name": "[concat(variables('keyVaultName'), '/', parameters('secretName'))]",
+            "apiVersion": "2019-09-01",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+            ],
+            "properties": {
+                "value": "[parameters('secretValue')]"
+            }
+        }
+    ],
+    "outputs": {
+        "keyVaultName": {
+            "type": "string",
+            "value": "[variables('keyVaultName')]"
+        }
+    }
+}
