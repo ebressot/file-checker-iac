@@ -20,7 +20,7 @@ if ($addParameters) {
     }
     
     Connect-AzureAD -TenantId $context.Tenant.Id
-    $user = Get-AzureADUser
+    $user = Get-AzureADUser -ObjectId $context.Account.Id
     $secretValue = Read-Host -Prompt 'Enter Alpha Vantage API key'
 
     $parameters = @{
